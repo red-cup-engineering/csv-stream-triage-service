@@ -15,11 +15,14 @@
     "src",
     "scripts",
     "data/records/schema",
-    "README.md"
+    "README.md",
+    "docs/API.md",
+    "examples/quickstart.test.mjs"
   ],
   "scripts": {
     "check": "for f in src/*.mjs scripts/*.mjs; do node --check \"$f\" || exit 1; done",
-    "test": "node --test test/*.test.mjs"
+    "test": "node --test test/*.test.mjs",
+    "test:consumer": "node --test examples/quickstart.test.mjs"
   },
   "engines": {
     "node": ">=22"

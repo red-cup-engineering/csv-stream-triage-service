@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "basis": "Parse CSV from a stream while retaining quoted delimiters and line breaks.",
+  "cases": [
+    {
+      "id": "CSV-STREAM-REFUSAL",
+      "role": "source",
+      "kind": "refusal",
+      "claim": "An unterminated quoted field refuses rather than yielding a truncated final record.",
+      "file": "test/csv-stream.test.mjs",
+      "test": "a file ending inside a quote is refused, not silently truncated"
+    },
+    {
+      "id": "CSV-STREAM-QUICKSTART",
+      "role": "consumer",
+      "kind": "example",
+      "claim": "An installed parser retains quoted commas, line breaks, and doubled quotes across record boundaries.",
+      "file": "examples/quickstart.test.mjs"
+    }
+  ]
+}

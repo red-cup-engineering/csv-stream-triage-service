@@ -36,3 +36,7 @@ The record carries `counts` (scanned, matchedFilters, matched, noDeadline, unpar
 
 - The SAM.gov spec and its filter values are data owned by whoever uses them: `coesite-operations`, `contract-pursuit-services-section/data/records/triage-specs/sam-gov-it-notices.json`. That spec was admitted by this package's `admitTriageSpec` and checked against the real extract's 47-column header read on 2026-10-08 (Observed). It has not been run against the full file (Untested): run it on the machine meant for large public-data work, not on a small laptop.
 - Triage says which notices are open and match. It does not say the seller is eligible. Set-aside, registration and past-performance terms are for a person to read in each notice.
+
+## Acceptance
+
+Run `npm test` for the source suite. See the [API reference](docs/API.md) and [runnable consumer example](examples/quickstart.test.mjs).
