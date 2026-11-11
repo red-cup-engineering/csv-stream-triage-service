@@ -1,6 +1,6 @@
 {
   "name": "@red-cup-engineering/csv-stream-triage-service",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "Streams a large CSV (a URL or a file) once, applies column filters and a future-deadline test given as a data record, and writes a dated triage record of what matched. Memory use does not grow with file size.",
   "exports": {
