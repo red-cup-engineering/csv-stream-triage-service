@@ -30,7 +30,7 @@ The record carries `counts` (scanned, matchedFilters, matched, noDeadline, unpar
 
 - 10 tests pass (Observed, `node --test`, run from copies outside any checkout): chunk boundaries anywhere (including inside a quote pair, a UTF-8 character, or between CR and LF), ragged rows, filters, deadline offsets, counts, and that unlisted columns never appear in output.
 - Parser speed on a synthetic 100 MB file of 48-column rows with long quoted descriptions: about 0.5 s and 81 MB RSS growth (Observed, one run). The real file's runtime is Untested.
-- The existing `csv-services-section` codec decodes whole text; this package exists because a 213 MB file should not be.
+- The existing `csv-engineering-services-section` codec decodes whole text; this package exists because a 213 MB file should not be.
 
 ## Not here
 
