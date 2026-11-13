@@ -16,7 +16,6 @@
     "scripts",
     "data/records/schema",
     "README.md",
-    "docs/API.md",
     "examples/quickstart.test.mjs"
   ],
   "scripts": {
