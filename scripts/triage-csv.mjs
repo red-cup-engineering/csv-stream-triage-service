@@ -3,7 +3,7 @@ import { createReadStream } from "node:fs";
 import { writeFile } from "node:fs/promises";
 import { readFile } from "node:fs/promises";
 import { parseArgs } from "node:util";
-import { validateTriageSpec, triage } from "../src/triage.mjs";
+import { admitTriageSpec, triage } from "../src/triage.mjs";
 
 /**
  * Streams the spec's source (or --file) once and prints the triage record as JSON.
@@ -16,7 +16,7 @@ import { validateTriageSpec, triage } from "../src/triage.mjs";
  */
 const { values } = parseArgs({ options: { spec: { type: "string" }, file: { type: "string" }, out: { type: "string" } } });
 if (!values.spec) throw new TypeError("--spec is required");
-const spec = validateTriageSpec(JSON.parse(await readFile(values.spec, "utf8")));
+const spec = admitTriageSpec(JSON.parse(await readFile(values.spec, "utf8")));
 
 let chunks;
 let source = {};

@@ -9,7 +9,7 @@ const nonEmpty = (value) => typeof value === "string" && value.length > 0;
  * or throws. Filters are exact string matches on named columns; nothing is
  * interpreted as code.
  */
-export function validateTriageSpec(spec) {
+export function admitTriageSpec(spec) {
   const fail = (reason) => { throw new TypeError(`triage spec ${JSON.stringify(spec?.id)}: ${reason}`); };
   if (!spec || typeof spec !== "object" || Array.isArray(spec)) throw new TypeError("triage spec must be an object");
   if (spec.kind !== "triage-spec" || spec.version !== 1) fail("kind must be triage-spec, version 1");
@@ -57,7 +57,7 @@ const passes = (filter, record) => {
  * @param {{now?: Date, source?: object}} [options]
  */
 export async function triage(chunks, spec, { now = new Date(), source = {} } = {}) {
-  validateTriageSpec(spec);
+  admitTriageSpec(spec);
   const runStart = now.getTime();
   const counts = { scanned: 0, matchedFilters: 0, matched: 0, noDeadline: 0, unparseableDeadline: 0, pastDeadline: 0, malformedRows: 0 };
   const kept = [];
