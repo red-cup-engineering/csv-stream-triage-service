@@ -1,8 +1,9 @@
+import { isNonEmptyString } from "@red-cup-engineering/signcell/values";
 import { csvRecords } from "./csv-stream.mjs";
 
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/u;
 const ISO_WITH_OFFSET = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:Z|[+-]\d{2}:\d{2})$/u;
-const nonEmpty = (value) => typeof value === "string" && value.length > 0;
+
 
 /**
  * Admits a triage spec (a data record, see data/records/schema/triage-spec.schema.json)
@@ -17,15 +18,15 @@ export function admitTriageSpec(spec) {
   if (!/^https:\/\/[^\s/]+/u.test(spec.source?.url ?? "")) fail("source.url must be an https URL");
   if (!Array.isArray(spec.filters)) fail("filters must be a list");
   for (const filter of spec.filters) {
-    if (!nonEmpty(filter?.column)) fail("every filter names a column");
+    if (!isNonEmptyString(filter?.column)) fail("every filter names a column");
     const ops = ["equals", "in", "notEmpty"].filter((op) => Object.hasOwn(filter, op));
     if (ops.length !== 1) fail(`filter on ${filter.column} needs exactly one of equals, in, notEmpty`);
     if (ops[0] === "equals" && typeof filter.equals !== "string") fail(`filter on ${filter.column}: equals must be a string`);
     if (ops[0] === "in" && (!Array.isArray(filter.in) || filter.in.length === 0 || filter.in.some((v) => typeof v !== "string"))) fail(`filter on ${filter.column}: in must be a non-empty list of strings`);
     if (ops[0] === "notEmpty" && filter.notEmpty !== true) fail(`filter on ${filter.column}: notEmpty must be true`);
   }
-  if (spec.deadline !== undefined && (!nonEmpty(spec.deadline.column) || spec.deadline.mustBeAfterRun !== true)) fail("deadline needs a column and mustBeAfterRun: true");
-  if (!Array.isArray(spec.keep) || spec.keep.length === 0 || spec.keep.some((c) => !nonEmpty(c))) fail("keep must list the columns to retain");
+  if (spec.deadline !== undefined && (!isNonEmptyString(spec.deadline.column) || spec.deadline.mustBeAfterRun !== true)) fail("deadline needs a column and mustBeAfterRun: true");
+  if (!Array.isArray(spec.keep) || spec.keep.length === 0 || spec.keep.some((c) => !isNonEmptyString(c))) fail("keep must list the columns to retain");
   if (spec.limit !== undefined && (!Number.isInteger(spec.limit) || spec.limit < 1)) fail("limit must be a positive integer");
   return spec;
 }
