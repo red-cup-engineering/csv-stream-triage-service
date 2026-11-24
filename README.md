@@ -17,7 +17,7 @@ Marks: **Observed** = run or read; **Inferred**; **Untested**.
 node scripts/triage-csv.mjs --spec path/to/spec.json [--file local.csv] [--out record.json]
 ```
 
-With no `--file` the spec's `source.url` is fetched and streamed; it is never held whole. No credential is read or sent. The spec shape is `data/records/schema/triage-spec.schema.json`:
+With no `--file` the spec's `source.url` is fetched and streamed; it is never held whole. No credential is read or sent. The spec shape is `data/records/schemas/triage-spec.schema.json`:
 
 - `filters`: exact matches on named columns (`equals`, `in`, `notEmpty`). Nothing is interpreted as code.
 - `deadline`: a column that must hold an ISO 8601 time with an offset, later than the run time. Empty and unparseable values are counted and dropped, not guessed.

@@ -6,7 +6,7 @@ const ISO_WITH_OFFSET = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:Z
 
 
 /**
- * Admits a triage spec (a data record, see data/records/schema/triage-spec.schema.json)
+ * Admits a triage spec (a data record, see data/records/schemas/triage-spec.schema.json)
  * or throws. Filters are exact string matches on named columns; nothing is
  * interpreted as code.
  */

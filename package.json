@@ -14,7 +14,7 @@
   "files": [
     "src",
     "scripts",
-    "data/records/schema",
+    "data/records/schemas",
     "README.md"
   ],
   "scripts": {
